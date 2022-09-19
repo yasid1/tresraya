@@ -74,16 +74,6 @@ const casillaOnClick = (row, col) => {
 
 const main = () => {
     board = createBoard(3, 3) 
-    renderizarBoard(board)
-
-    setValue(board, 1, 1, {
-        seMuestra : false,
-        emoji1 : "&#x1F370;",
-        emoji2 : "&#x2B55;"
-    })
-
-    renderizarBoard(board)
-
 }
 
 main()
