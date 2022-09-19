@@ -11,6 +11,8 @@ function createBoard(numRows, numCols) {
         for (let j = 0; j < numCols; j++) {
             casillas.push({
                 seMuestra : false,
+                jugo: false,
+                turno: false,
                 emoji1 : "&#x274C;",
                 emoji2 : "&#x2B55;"
             })
@@ -47,9 +49,10 @@ const renderizarBoard = (board) => {
         for (let j=0; j < casillas.length; j++) {
             const butCasilla = document.getElementById(`${i}_${j}`) // string interpolation
             if (casillas[j].seMuestra) {
-                if (turno) {
+                if (casillas[j].turno==true && casillas[j].jugo==false) {
                     butCasilla.innerHTML = casillas[j].emoji1
-                }else{
+                }
+                if (casillas[j].turno==false && casillas[j].jugo==false) {
                     butCasilla.innerHTML = casillas[j].emoji2
                 }
             }else {
@@ -63,12 +66,15 @@ const renderizarBoard = (board) => {
 const casillaOnClick = (row, col) => {
     const casilla = getValue(board, row, col)
     casilla.seMuestra = true
+    casilla.turno = turno
     renderizarBoard(board)
+    casilla.jugo = true
     if (turno) {
         turno=false
     }else{
         turno=true
     }
+    document.getElementById(`${row}_${col}`).className += " disabled" ;
         
 }
 

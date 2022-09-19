@@ -11,3 +11,7 @@
 .row{
     height: 100px;
 }
+
+.disabled{
+    pointer-events: none;
+}
